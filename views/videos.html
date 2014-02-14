@@ -1,3 +1,15 @@
 <div>
 	<h1>Videos</h1>
+	<span>
+        <select ng-model="game" ng-change="changed();" ng-options="g as g.name for g in games">
+			<option value="">All Games</option>
+		</select>
+      </span><br/>
+	<div class="list-wrapper">
+		<ul>
+			<li ng-repeat="video in videos">
+				Video
+			</li>
+		</ul>
+	</div>
 </div>
