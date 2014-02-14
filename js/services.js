@@ -15,6 +15,19 @@ app.factory('Everyplay', function($q) {
 				}]
 				deferred.resolve(games);
 				return deferred.promise;
+			},
+			getVideosByGame: function(game) {
+				var deferred = $q.defer();
+				// todo add fetching games with api, for now returns static games data
+				var videos = [{
+					id: 1,
+					name: 'Video 1'
+				}, {
+					id: 2,
+					name: 'Video 2'
+				}];
+				deferred.resolve(videos);
+				return deferred.promise;
 			}
 		}
 	})
