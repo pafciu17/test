@@ -1,25 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
 	<title>Videos</title>
-	<!-- bootstrap css -->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-	<!-- bootstrap js -->
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
 	<!-- angularjs -->
 	<script src="js/ext/angular.js"></script>
 	<script src="js/ext/angular-route.js"></script>
 
 	<!-- custom js -->
+	<script src="js/route.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
 	<script src="js/services.js"></script>
 </head>
 <body>
-
+	<div ng-view></div>
 </body>
 </html>
