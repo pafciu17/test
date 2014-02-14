@@ -18,6 +18,7 @@ app.controller('Videos', function($scope, Everyplay) {
 		$scope.filterByGame = function(game) {
 			loadVideosByGame(game);
 		}
+
 	})
 	.controller('Video', function($scope) {
 		//handler for specific video page
