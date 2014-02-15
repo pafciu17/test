@@ -20,15 +20,20 @@ app.factory('Everyplay', function($q, $http) {
 			},
 			getVideosByGame: function(game) {
 				var deferred = $q.defer();
-				// todo add fetching games with api, for now returns static games data
-				var videos = [{
-					id: 1,
-					name: 'Video 1'
-				}, {
-					id: 2,
-					name: 'Video 2'
-				}];
-				deferred.resolve(videos);
+				var url = apiUrl;
+				if (game && game.hasOwnProperty('id')) {
+					url += 'users/' + game.profile_id + '/'
+				}
+				$http.get(url + 'videos', {
+					params: {
+						order: '-views',
+						client_id: clientId
+					}
+				}).then(function(response) {
+						if (response && response.hasOwnProperty('data')) {
+							deferred.resolve(response.data);
+						}
+					})
 				return deferred.promise;
 			}
 		}

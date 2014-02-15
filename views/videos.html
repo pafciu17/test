@@ -1,15 +1,17 @@
 <div>
 	<h1>Videos</h1>
 	<span>
-        <select ng-model="game" ng-change="filterByGame();" ng-options="g as g.name for g in games">
+        <select ng-model="game" ng-change="filterByGame(game);" ng-options="g as g.name for g in games">
 			<option value="">All Games</option>
 		</select>
       </span><br/>
 	<div class="list-wrapper">
-		<ul>
-			<li ng-repeat="video in videos">
-				Video
-			</li>
-		</ul>
+		<div ng-repeat="video in videos">
+			<a href="#/videos/{{ video.id }}">
+				<img src="{{ video.thumbnail_url }}" />
+				<h2>{{ video.title }}</h2>
+				<h3>{{ video.user.username }}</h3>
+			</a>
+		</div>
 	</div>
 </div>

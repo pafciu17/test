@@ -9,7 +9,9 @@ app.controller('Videos', function($scope, Everyplay) {
 					$scope.videos = videos;
 				})
 		}
-		loadVideosByGame();
+		if (!$scope.videos) {
+			loadVideosByGame();
+		}
 
 		Everyplay.getGames()
 			.then(function(games) {
