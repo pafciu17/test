@@ -2,8 +2,13 @@
  * Created by pawel on 2/14/14.
  */
 app.factory('Everyplay', function($q, $http) {
-	var clientId = 'f2d852e22cadc3dc837c5262e9b216fd2e8e6b39';
-	var apiUrl = 'https://everyplay.com/api/';
+		var clientId = 'f2d852e22cadc3dc837c5262e9b216fd2e8e6b39';
+		var apiUrl = 'https://everyplay.com/api/';
+		var handleResponse = function(deferred, response) {
+			if (response && response.hasOwnProperty('data')) {
+				deferred.resolve(response.data);
+			}
+		}
 		return {
 			getGames: function() {
 				var deferred = $q.defer();
@@ -12,9 +17,7 @@ app.factory('Everyplay', function($q, $http) {
 						client_id: clientId
 					}
 				}).then(function(response) {
-						if (response && response.hasOwnProperty('data')) {
-							deferred.resolve(response.data);
-						}
+						handleResponse(deferred, response);
 					})
 				return deferred.promise;
 			},
@@ -30,9 +33,7 @@ app.factory('Everyplay', function($q, $http) {
 						client_id: clientId
 					}
 				}).then(function(response) {
-						if (response && response.hasOwnProperty('data')) {
-							deferred.resolve(response.data);
-						}
+						handleResponse(deferred, response);
 					})
 				return deferred.promise;
 			}
