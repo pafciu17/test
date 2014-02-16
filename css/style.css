@@ -1,0 +1,16 @@
+.video-item {
+	padding: 10px;
+}
+
+.details {
+	padding: 5px;
+	float: left;
+}
+
+.video-thumbnail {
+	float: left;
+}
+
+.clear {
+	clear: both
+}
