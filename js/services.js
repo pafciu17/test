@@ -7,6 +7,8 @@ app.factory('Everyplay', function($q, $http) {
 		var handleResponse = function(deferred, response) {
 			if (response && response.hasOwnProperty('data')) {
 				deferred.resolve(response.data);
+			} else {
+				deferred.reject('incorrect response');
 			}
 		}
 		return {
@@ -21,6 +23,7 @@ app.factory('Everyplay', function($q, $http) {
 					})
 				return deferred.promise;
 			},
+
 			getVideosByGame: function(game) {
 				var deferred = $q.defer();
 				var url = apiUrl;
@@ -30,6 +33,18 @@ app.factory('Everyplay', function($q, $http) {
 				$http.get(url + 'videos', {
 					params: {
 						order: '-views',
+						client_id: clientId
+					}
+				}).then(function(response) {
+						handleResponse(deferred, response);
+					})
+				return deferred.promise;
+			},
+
+			getVideo: function(videoId) {
+				var deferred = $q.defer();
+				$http.get(apiUrl + 'videos/' + videoId, {
+					params: {
 						client_id: clientId
 					}
 				}).then(function(response) {

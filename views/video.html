@@ -1,4 +1,23 @@
 <div>
 	<a href="#/videos"><< Back</a>
 	<h1>Video</h1>
+	<div>
+		<video poster="{{ video.play_thumbnail }}" ng-src="{{ video.play_src_mp4 }}" controls>
+		</video>
+	</div>
+	<table>
+		<tr>
+			<td>
+				<img src="{{ video.user.avatar_url_small }}">
+			</td>
+			<td>
+				<strong>Posted:</strong> {{ video.uploaded | date:'dd.mm.yyyy' }}
+			</td>
+		</tr>
+		<tr>
+			<td  colspan="3">
+				{{ video.user.username }}
+			</td>
+		</tr>
+	</table>
 </div>
